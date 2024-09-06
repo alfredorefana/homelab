@@ -1,0 +1,12 @@
+---
+services:
+  myspeed:
+    image: germannewsmaker/myspeed
+    container_name: myspeed
+    restart: unless-stopped
+    volumes:
+      - ./data:/myspeed/data
+    ports:
+      - '5216:5216'
+    security_opt:
+      - no-new-privileges:true
