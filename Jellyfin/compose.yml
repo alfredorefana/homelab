@@ -1,0 +1,27 @@
+---
+services:
+  jellyfin:
+    image: jellyfin/jellyfin
+    container_name: jellyfin
+    # user: uid:gid
+    # network_mode: 'host'
+    volumes:
+      - ./config:/config
+      - ./cache:/cache
+      - /mnt/shares/Media/Videos:/Videos:ro
+      - /mnt/shares/Media/Shows:/Shows:ro
+      - /mnt/shares/Media/Movies:/Movies:ro
+    restart: 'unless-stopped'
+    ports: 
+      - 8096:8096
+      - 8920:8920 #optional
+      - 7359:7359/udp # Optional - alternative address used for autodiscovery
+      - 1900:1900/udp #optional
+    environment:
+      - TZ=Europe/Berlin
+      # - JELLYFIN_PublishedServerUrl=http://test-jellyfin.trano.jaolahy.com
+    # Optional - may be necessary for docker healthcheck to pass if running in host network mode
+    # extra_hosts:
+    #  - 'host.docker.internal:host-gateway'
+    security_opt:
+      - no-new-privileges:true
