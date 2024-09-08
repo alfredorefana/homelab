@@ -1,0 +1,17 @@
+---
+services:
+  audiobookshelf:
+    container_name: audiobookshelf
+    image: ghcr.io/advplyr/audiobookshelf:latest
+    restart: unless-stopped
+    ports:
+      - 80:80
+    volumes:
+      - /mnt/shares/Media/Books/AudioBooks:/audiobooks
+      - /mnt/shares/Media/Podcasts:/podcasts
+      - ./config:/config
+      - ./metadata:/metadata
+    environment:
+      - TZ=Europe/Berlin
+    security_opt:
+      - no-new-privileges:true
