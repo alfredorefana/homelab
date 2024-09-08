@@ -1,0 +1,20 @@
+---
+services:
+  navidrome:
+    image: deluan/navidrome:latest
+    container_name: navidrome
+    # user: 1000:1000
+    volumes:
+      - ./data:/data
+      - /mnt/shares/Media/Musics:/music:ro
+    ports:
+      - 4533:4533
+    restart: unless-stopped
+    environment:
+      ND_LOGLEVEL: info
+      ND_SCANSCHEDULE: 48h
+      ND_SESSIONTIMEOUT: 24h
+      ND_PROMETHEUS_ENABLED: "true"
+      ND_PROMETHEUS_METRICSPATH: "/metrics"
+    security_opt:
+      - no-new-privileges:true
