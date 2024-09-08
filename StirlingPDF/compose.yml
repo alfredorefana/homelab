@@ -1,0 +1,30 @@
+---
+services:
+  app:
+    container_name: pdf-stirling
+    image: frooodle/s-pdf:latest
+    volumes:
+      - ./trainingData:/usr/share/tessdata #Required for extra OCR languages
+      - ./extraConfigs:/configs
+      - ./customFiles:/customFiles/
+      - ./logs:/logs/
+    environment:
+      - DOCKER_ENABLE_SECURITY=true
+      - INSTALL_BOOK_AND_ADVANCED_HTML_OPS=false
+      # - SECURITY_ENABLELOGIN=true
+      # - SECURITY_INITIALLOGIN_USERNAME=username
+      # - SECURITY_INITIALLOGIN_PASSWORD=password
+      - LANGS=en_GB
+    restart: 'unless-stopped'
+    # ports:
+    #  - '12345:8080'
+    networks:
+      - to-proxy
+      - ext-mivoaka
+
+networks:
+  to-proxy:
+    name: proxy-backend
+    external: true
+  ext-mivoaka:
+    external: true
