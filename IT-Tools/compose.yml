@@ -1,0 +1,16 @@
+---
+services:
+  it-tools:
+    image: 'corentinth/it-tools:latest'
+    # ports:
+    #  - '12345:80'
+    restart: unless-stopped
+    container_name: it-tools
+    # hostname: it-tools
+    networks:
+      - to-proxy
+
+networks:
+  to-proxy:
+    name: proxy-backend
+    external: true
