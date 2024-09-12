@@ -16,11 +16,11 @@ services:
       # - SECURITY_INITIALLOGIN_PASSWORD=password
       - LANGS=en_GB
     restart: 'unless-stopped'
-    # ports:
-    #  - '12345:8080'
-    networks:
-      - to-proxy
-      - ext-mivoaka
+    ports:
+     - '8080:8080'
+    # networks:
+    #   - to-proxy
+    #   - ext-mivoaka
 
 networks:
   to-proxy:
