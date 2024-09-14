@@ -1,41 +1,47 @@
-# Personal self-hosting (homelab) repo
+# Homelab
 
-This project describes my personal self-hosted infrastructure setup, running on a Raspberry Pi 4 board (for now).
+This project describes my personal self-hosted infrastructure setup.
 
-This was meant to be just a reminder for me as I can never trust my brain, now I am making it publicly available in case it might help someone out there.
+This was meant to be just a reminder for me as I can never trust my brain, you forget stuff when you get older, that is a known fact. Now I am making it publicly available in case it might help someone out there.
 
-It uses only free and open source software and hardware.
+Overall, I am using  only free and open source software
 
 > [!IMPORTANT]
-> - The content of this repository is provided "as is", with no guarantee that the information is complete or error-free. Do not just "Copy-Paste", but try to analyze and adapt the content according your use case, especially the docker network (port) and volumes.
-> - The techniques and tools discussed here come with inherent risks.
-> - The author and contributors take absolutely no responsibility for possible consequences due to the use of the related software.
+> - The content of this repository is provided **"as is"**, with no guarantee that the information is complete or error-free. Do not just blindly "Copy-Paste", but try to analyze and adapt the content according your use case and your infrastructure, especially the docker network (port) and volumes.
+> - I, the author, take absolutely no responsibility for possible consequences due to the use of the related software and/or any scripts/files in here.
 
 ## Objective
 
-I started this project in summer 2023 as a **home lab**, for learning purpose and I just want to keep all my data locally located and managed by myself. 
+I started this project back in summer 2023 as a **home lab**, for learning purpose and I just wanted to keep all my data to be located locally and managed by myself. Well, just started to be really serious with online privacy. 
 
-The goal was to have an environment, which is:
+When planning the whole idea, the main goal was to have an environment, which is:
 
-- **100% self-hosted** (privacy preserving, full control over data and software)
-- **Resource efficient** (The electricity in the country where I live is quite expensive, so I needed to run something resource efficient)
-- **Secure** (authentication, SSL/TLS, firewall, ad-blocking, DDOS protection, rate limiting, custom DNS resolver, ...)
-- **Lightweight** (runs smoothly with minimal hardware and software requirements)
-- **Container-ready** (isolated, portable, scalable applications)
-- **Accessible** (some services accessible only locally, some only through VPN, some publicly on the internet)
-- **Supervised** (monitoring, alerting, tracking, and backup tools)
+- **100% self-hosted** => privacy preserving, full control over my dat
+- **Secure** => I need implement authentication, SSL/TLS, firewall, Ad-blocking,custom DNS resolver.
+- **Energy efficient** => The electricity in the country where I live is quite expensive, so I needed to run something energy efficient.
+- **Lightweight** => Everything should run smoothly with minimal hardware and software requirements)
+- **Container-ready** => I've always loved the idea of de-coupled services, i.e. isolated, portable, scalable applications. 
+- **Accessible** => some services accessible only locally, some only through VPN.
+- **Observability** => monitoring, alerting, tracking.
+- **Backups** => I should be able to deploy and manage backups of any data and running services. 
 
 
 ## Hardware
 
-Currently all the apps below are running on my [Raspberry Pi 4 Model B](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/)
+Currently all the apps below are running on a single [Raspberry Pi 4 Model B](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) with 8 Gb of RAM. 
+
+## Architecture
+
+> [!NOTE]
+> The schenas is still on paper and I need to work on transferring it to a digital one.
 
 ## Services
 
-I am running and using the following apps. 
+I am running and using the following apps. This list is constantly being updated as soon as I am deploying new services. 
 
 | Service Name   		|	Port		| Use cases																			| Official Details																									|
 |-----------------------|---------------|-----------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------	|
+| AdGuardHome			|	53			| Network-wide ads & trackers blocking DNS server.									| [Github](https://github.com/AdguardTeam/AdGuardHome)	[Website](https://adguard.com/)								|
 | AudioBookShelf		|	80			| Audiobookshelf is a self-hosted audiobook and podcast server.						| [Github](https://github.com/advplyr/audiobookshelf)	[Website](https://www.audiobookshelf.org/)					|
 | ActualBudget			|	5006		| Actual is a local-first personal finance tool. 									| [Github](https://github.com/actualbudget/actual)	[Website](https://actualbudget.com/)							|
 | CAdvisor				|	8080		| To analyze resource usage and performance characteristics of running containers.	| [Github](https://github.com/google/cadvisor)																		|
