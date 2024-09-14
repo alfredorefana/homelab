@@ -34,7 +34,9 @@ Currently all the apps below are running on my [Raspberry Pi 4 Model B](https://
 
 I am running and using the following apps. 
 
-| Service Name   	|	Port	| Use cases															| Official Details																								|
-|-------------------|-----------|-------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
-| Audiobookshelf	|	80		| Audiobookshelf is a self-hosted audiobook and podcast server.		| [Official Website](https://www.audiobookshelf.org/)	/ [Github](https://github.com/advplyr/audiobookshelf)	|
-| ActualBudget		|	5006	| Audiobookshelf is a self-hosted audiobook and podcast server.		| [Official Website](hhttps://actualbudget.com/)	/ [Github](https://github.com/actualbudget/actual)			|
+| Service Name   	|	Port	| Use cases															| Official Details																									|
+|-------------------|-----------|-------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|
+| Audiobookshelf	|	80		| Audiobookshelf is a self-hosted audiobook and podcast server.		| [Website](https://www.audiobookshelf.org/)	[Github repo](https://github.com/advplyr/audiobookshelf)			|
+| ActualBudget		|	5006	| Actual is a local-first personal finance tool. 					| [Website](https://actualbudget.com/)	[Github repo](https://github.com/actualbudget/actual)						|
+| Changedetection	|	5000	| Page change monitoring with alerts a breeze.	 					| [Github repo](https://github.com/dgtlmoon/changedetection.io)	[Website](https://changedetection.io/)				|
+
