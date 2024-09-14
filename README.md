@@ -30,10 +30,10 @@ When planning the whole idea, the main goal was to have an environment, which is
 
 Currently all the apps below are running on a single [Raspberry Pi 4 Model B](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) with 8 Gb of RAM. 
 
-## Architecture
+## Architecture and Networking
 
 > [!NOTE]
-> The schenas is still on paper and I need to work on transferring it to a digital one.
+> The schemas are still on paper and I need to work on transferring them to a digital drawing.
 
 ## Services
 
@@ -64,3 +64,8 @@ I am running and using the following apps. This list is constantly being updated
 | UptimeKuma			|	3001		| An easy-to-use self-hosted monitoring tool.										| [Github](https://github.com/louislam/uptime-kuma)																	|
 | Vaultwarden			|	80			| Alternative implementation of the Bitwarden server API.							| [Github](https://github.com/dani-garcia/vaultwarden)																|
 | Wiki-JS				|	3000		| A lightweight and powerful wiki app built on NodeJS.								| [Github](https://github.com/Requarks/wiki)	[Website](https://js.wiki/)											|
+
+
+## TO-DO
+
+- Pending tasks
