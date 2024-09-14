@@ -34,8 +34,14 @@ Currently all the apps below are running on my [Raspberry Pi 4 Model B](https://
 
 I am running and using the following apps. 
 
-| Service Name   	|	Port	| Use cases															| Official Details																									|
-|-------------------|-----------|-------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|
-| Audiobookshelf	|	80		| Audiobookshelf is a self-hosted audiobook and podcast server.		| [Website](https://www.audiobookshelf.org/)	[Github](https://github.com/advplyr/audiobookshelf)					|
-| ActualBudget		|	5006	| Actual is a local-first personal finance tool. 					| [Website](https://actualbudget.com/)	[Github](https://github.com/actualbudget/actual)							|
-| Changedetection	|	5000	| Page change monitoring with alerts a breeze.	 					| [Github](https://github.com/dgtlmoon/changedetection.io)	[Website](https://changedetection.io/)					|
+| Service Name   	|	Port	| Use cases																			| Official Details																									|
+|-------------------|-----------|-----------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|
+| AudioBookShelf	|	80		| Audiobookshelf is a self-hosted audiobook and podcast server.						| [Github](https://github.com/advplyr/audiobookshelf)	[Website](https://www.audiobookshelf.org/)					|
+| ActualBudget		|	5006	| Actual is a local-first personal finance tool. 									| [Github](https://github.com/actualbudget/actual)	[Website](https://actualbudget.com/)							|
+| ChangeDetection	|	5000	| Page change monitoring with alerts a breeze.	 									| [Github](https://github.com/dgtlmoon/changedetection.io)	[Website](https://changedetection.io/)					|
+| FritzBox-Exporter	|	9787	| This is a prometheus exporter for AVM Fritz! 	 									| [Github](https://github.com/pdreker/fritz_exporter)																|
+| HomeAssistant		|	8123	| Open source home automation that puts local control and privacy first.			| [Github](https://github.com/home-assistant/core)	[Website](https://www.home-assistant.io/)						|
+| Homer				|	8080	| A simple static HOMepage for your servER to keep your services on hand.			| [Github](https://github.com/bastienwirtz/homer)	[Website](https://homer-demo.netlify.app/)						|
+| InfluxDB			|	8086	| An open source time series database for metrics, events, and real-time analytics.	| [Github](https://github.com/influxdata/influxdb)	[Website](https://www.influxdata.com/)							|
+| IT-Tools			|	80		| Collection of handy online tools for developers, with great UX.					| [Github](https://github.com/CorentinTh/it-tools)	[Website](https://it-tools.tech/)								|
+| Lubelogger		|	8080	| Web-Based Vehicle Maintenance and Fuel Mileage Tracker.							| [Github](https://github.com/hargata/lubelog)	[Website](https://lubelogger.com/)									|
