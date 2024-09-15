@@ -1,0 +1,100 @@
+---
+services:
+  planka:
+    image: ghcr.io/plankanban/planka:latest
+    restart: unless-stopped
+    container_name: app-planka
+    volumes:
+      # You need to create the following directories and  make sure to adjust the permission on them:
+      # chown -R 1000:1000 -R ./app-data
+      - ./app-data/user-avatars:/app/public/user-avatars
+      - ./app-data/project-background-images:/app/public/project-background-images
+      - ./app-data/attachments:/app/private/attachments
+    ports:
+      - 1337:1337
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      - BASE_URL=http://sub.domain.com:1337
+      - DATABASE_URL=postgresql://postgres@postgres/planka
+        # Generate a secret key and paste it below: # openssl rand -hex 64
+      - SECRET_KEY=YOUR_TOKEN_AS_GENERATED_ABOVE
+
+      # - TRUST_PROXY=0
+      # - TOKEN_EXPIRES_IN=365 # In days
+
+      # related: https://github.com/knex/knex/issues/2354
+      # As knex does not pass query parameters from the connection string we
+      # have to use environment variables in order to pass the desired values, e.g.
+      # - PGSSLMODE=<value>
+
+      # Configure knex to accept SSL certificates
+      # - KNEX_REJECT_UNAUTHORIZED_SSL_CERTIFICATE=false
+
+      - DEFAULT_ADMIN_EMAIL=admin@jaolahy.com # Do not remove if you want to prevent this user from being edited/deleted
+      - DEFAULT_ADMIN_PASSWORD=SuperSecurePWD
+      - DEFAULT_ADMIN_NAME=Administrator
+      - DEFAULT_ADMIN_USERNAME=admin
+
+      # - SHOW_DETAILED_AUTH_ERRORS=false # Set to true to show more detailed authentication error messages. It should not be enabled without a rate limiter for security reasons.
+
+      # - ALLOW_ALL_TO_CREATE_PROJECTS=true
+
+      # - OIDC_ISSUER=
+      # - OIDC_CLIENT_ID=
+      # - OIDC_CLIENT_SECRET=
+      # - OIDC_ID_TOKEN_SIGNED_RESPONSE_ALG=
+      # - OIDC_USERINFO_SIGNED_RESPONSE_ALG=
+      # - OIDC_SCOPES=openid email profile
+      # - OIDC_RESPONSE_MODE=fragment
+      # - OIDC_USE_DEFAULT_RESPONSE_MODE=true
+      # - OIDC_ADMIN_ROLES=admin
+      # - OIDC_EMAIL_ATTRIBUTE=email
+      # - OIDC_NAME_ATTRIBUTE=name
+      # - OIDC_USERNAME_ATTRIBUTE=preferred_username
+      # - OIDC_ROLES_ATTRIBUTE=groups
+      # - OIDC_IGNORE_USERNAME=true
+      # - OIDC_IGNORE_ROLES=true
+      # - OIDC_ENFORCED=true
+
+      # Email Notifications (https://nodemailer.com/smtp/)
+      # - SMTP_HOST=
+      # - SMTP_PORT=587
+      # - SMTP_NAME=
+      # - SMTP_SECURE=true
+      # - SMTP_USER=
+      # - SMTP_PASSWORD=
+      # - SMTP_FROM="Demo Demo" <demo@demo.demo>
+
+      # Optional fields: accessToken, events, excludedEvents
+      # - |
+      #   WEBHOOKS=[{
+      #     "url": "http://localhost:3001",
+      #     "accessToken": "notaccesstoken",
+      #     "events": ["cardCreate", "cardUpdate", "cardDelete"],
+      #     "excludedEvents": ["notificationCreate", "notificationUpdate"]
+      #   }]
+
+      # - SLACK_BOT_TOKEN=
+      # - SLACK_CHANNEL_ID=
+      # - GOOGLE_CHAT_WEBHOOK_URL=
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    image: postgres:14-alpine
+    restart: unless-stopped
+    container_name: db-planka
+    volumes:
+      - ./db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=planka
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d planka"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    security_opt:
+      - no-new-privileges:true

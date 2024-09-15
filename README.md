@@ -58,6 +58,7 @@ I am running and using the following apps. This list is constantly being updated
 | NextCLoud				|	80			| My private cloud. I hate GoogleDrive, OneDrive.									| [Github](https://github.com/nextcloud)	[Website](https://nextcloud.com/)										|
 | Nginx Proxy Manager	|	80, 81, 443	| To easily forward to websites running at home, including free SSL.				| [Github](https://github.com/NginxProxyManager/nginx-proxy-manager)	[Website](https://nginxproxymanager.com/)	|
 | Node-Exporter			|	9100		| Exporter for *nix machine metrics													| [Github](https://github.com/prometheus/node_exporter)																|
+| Planka				|	1337		| An open source project tracking.													| [Github](https://github.com/plankanban/planka/)	[Website](https://planka.app/)									|
 | Portainer				|	9000		| Making Docker via a Web  UI														| [Github](https://github.com/portainer/portainer)	[Website](https://www.portainer.io/)							|
 | Prometheus			|	8080		| The Prometheus monitoring system and time series database.						| [Github](https://github.com/prometheus/prometheus)	[Website](https://prometheus.io/)							|
 | Stirling-pdf			|	8080		| Web application that allows you to perform various operations on PDF files		| [Github](https://github.com/Stirling-Tools/Stirling-PDF)	[Website](https://prometheus.io/)						|
