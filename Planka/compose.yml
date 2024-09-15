@@ -10,6 +10,7 @@ services:
       - ./app-data/user-avatars:/app/public/user-avatars
       - ./app-data/project-background-images:/app/public/project-background-images
       - ./app-data/attachments:/app/private/attachments
+      - ./app-data/logs:/app/logs # app logs, in case you want to save on the host machine. 
     ports:
       - 1337:1337
     security_opt:
