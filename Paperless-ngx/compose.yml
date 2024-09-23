@@ -18,30 +18,20 @@
 #   is configured to use these services. These provide support for consuming
 #   Office documents (Word, Excel, Power Point and their LibreOffice counter-
 #   parts.
-#
-# To install and update paperless with this file, do the following:
-#
-# - Copy this file as 'docker-compose.yml' and the files 'docker-compose.env'
-#   and '.env' into a folder.
-# - Run 'docker compose pull'.
-# - Run 'docker compose run --rm webserver createsuperuser' to create a user.
-# - Run 'docker compose up -d'.
-#
-# For more extensive installation and update instructions, refer to the
-# documentation.
+
 
 services:
   broker:
     image: docker.io/library/redis:7
     restart: unless-stopped
     volumes:
-      - redisdata:/data
+      - ./redisdata:/data
 
   db:
     image: docker.io/library/postgres:16
     restart: unless-stopped
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - ./pgdata:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: paperless
       POSTGRES_USER: paperless
@@ -50,6 +40,7 @@ services:
   webserver:
     image: ghcr.io/paperless-ngx/paperless-ngx:latest
     restart: unless-stopped
+    hostname: paperless-web
     depends_on:
       - db
       - broker
@@ -58,10 +49,10 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - data:/usr/src/paperless/data
-      - media:/usr/src/paperless/media
-      - ./export:/usr/src/paperless/export
-      - ./consume:/usr/src/paperless/consume
+      - ./webserver-data/data:/usr/src/paperless/data
+      - ./webserver-data/media:/usr/src/paperless/media
+      - ./webserver-data/export:/usr/src/paperless/export
+      - ./webserver-data/consume:/usr/src/paperless/consume
     env_file: docker-compose.env
     environment:
       PAPERLESS_REDIS: redis://broker:6379
