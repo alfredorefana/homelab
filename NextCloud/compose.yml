@@ -1,7 +1,7 @@
 ---
 services:
   db:
-    image: postgres:alpine
+    image: postgres:16-alpine
     restart: unless-stopped
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
@@ -14,20 +14,19 @@ services:
       - postgres_password
       - postgres_user
     # networks:
-    #  - internal
+    #   - internal
 
   app:
     hostname: nextcloud
-    image: nextcloud:apache
+    image: nextcloud:30-apache
     restart: unless-stopped
     volumes:
       # - ./nextcloud-data:/var/www/html
-      - ./appconfig-data:/var/www/html
+      - ./app-data:/var/www/html
       # Mapping the user data directory from the container onto separate directory.
       # Needs to create and  chown www-data:www-data users-data directory prior starting the containers
       # - ./users-data:/var/www/html/data
-      - ./users-data:/opt/nextcloud-data
-      # - /mnt/shares/NextCloud/users-data:/opt/nextcloud-data
+      - ./users-data:/opt/nc-users-data
     environment:
       - POSTGRES_HOST=db
       - POSTGRES_DB_FILE=/run/secrets/postgres_db
@@ -35,12 +34,12 @@ services:
       - POSTGRES_PASSWORD_FILE=/run/secrets/postgres_password
       - NEXTCLOUD_ADMIN_PASSWORD_FILE=/run/secrets/nextcloud_admin_password
       - NEXTCLOUD_ADMIN_USER_FILE=/run/secrets/nextcloud_admin_user
-      - NEXTCLOUD_TRUSTED_DOMAINS=cloud.home.lab
-      - OVERWRITECLIURL=https://cloud.home.lab/
+      - NEXTCLOUD_TRUSTED_DOMAINS=cloud.home.lab.com
+      - OVERWRITECLIURL=https://cloud.home.lab.com/
       - OVERWRITEPROTOCOL=https
-      - VIRTUAL_HOST=cloud.home.lab
+      - VIRTUAL_HOST=cloud.home.lab.com
       - REDIS_HOST=redis
-      - NEXTCLOUD_DATA_DIR=/opt/nextcloud-data # moving the user data from /var/html to this directory
+      - NEXTCLOUD_DATA_DIR=/opt/nc-users-data # moving the user data from /var/html to this directory
     depends_on:
       - db
     secrets:
@@ -52,16 +51,16 @@ services:
     ports:
       - 80:80
     # networks:
-    #  - internal
-    # - ext-mivoaka
+    #   - internal
+    #   - ext-mivoaka
 
   redis:
     image: redis:alpine
     restart: unless-stopped
-    # networks:
-    #  - internal
     volumes:
       - ./redis-data:/data
+    networks:
+      - internal
 
 networks:
   internal:
