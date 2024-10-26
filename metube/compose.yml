@@ -1,0 +1,14 @@
+---
+services:
+  metube:
+    image: ghcr.io/alexta69/metube
+    container_name: metube
+    restart: unless-stopped
+    volumes:
+      - ./downloads:/downloads
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      - TZ=Europe/Berlin
+    ports:
+      - "8081:8081"

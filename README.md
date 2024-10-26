@@ -38,7 +38,6 @@ Currently all the apps below are running on a single [Raspberry Pi 4 Model B](ht
 ## Services
 
 I am running and using the following apps. This list is constantly being updated as soon as I am deploying new services. 
-
 | Service Name   		|	Port		| Use cases																			| Official Details																									|
 |-----------------------|---------------|-----------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------	|
 | AdGuardHome			|	53			| Network-wide ads & trackers blocking DNS server.									| [Github](https://github.com/AdguardTeam/AdGuardHome)	[Website](https://adguard.com/)								|
@@ -53,6 +52,7 @@ I am running and using the following apps. This list is constantly being updated
 | InfluxDB				|	8086		| An open source time series database for metrics, events, and real-time analytics.	| [Github](https://github.com/influxdata/influxdb)	[Website](https://www.influxdata.com/)							|
 | IT-Tools				|	80			| Collection of handy online tools for developers, with great UX.					| [Github](https://github.com/CorentinTh/it-tools)	[Website](https://it-tools.tech/)								|
 | Lubelogger			|	8080		| Web-Based Vehicle Maintenance and Fuel Mileage Tracker.							| [Github](https://github.com/hargata/lubelog)	[Website](https://lubelogger.com/)									|
+| MeTube				|	8081		| Self-hosted YouTube (and others) downloader (web UI for youtube-dl / yt-dlp.		| [Github](https://github.com/alexta69/metube)																		|
 | MySpeed				|	5216		| A speed test analysis software that shows your internet speed						| [Github](https://github.com/gnmyt/myspeed)	[Website](https://myspeed.dev/)										|
 | Navidrome				|	4533		| My personal Streaming Service as of using Spotify.								| [Github](https://github.com/navidrome/navidrome/)	[Website](https://www.navidrome.org/)							|
 | NextCLoud				|	80			| My private cloud. I hate GoogleDrive, OneDrive.									| [Github](https://github.com/nextcloud)	[Website](https://nextcloud.com/)										|
