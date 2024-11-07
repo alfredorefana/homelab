@@ -1,0 +1,14 @@
+---
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:1
+    container_name: uptime-kuma
+    volumes:
+      - ./appdata:/app/data
+    ports:
+      - 3001:3001  # <Host Port>:<Container Port>
+    restart: unless-stopped
+    # dns:
+    #  - "192.168.178.1"
+    security_opt:
+      - no-new-privileges:true
