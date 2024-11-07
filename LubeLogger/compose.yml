@@ -1,0 +1,24 @@
+---
+services:
+  lubelogger:
+    container_name: lubelogger
+    image: ghcr.io/hargata/lubelogger:latest
+    # build: .
+    restart: unless-stopped
+    # volumes used to keep data persistent
+    volumes:
+      - ./app-data/config:/App/config
+      - ./app-data/data:/App/data
+      - ./app-data/translations:/App/wwwroot/translations
+      - ./app-data/documents:/App/wwwroot/documents
+      - ./app-data/images:/App/wwwroot/images
+      - ./app-data/temp:/App/wwwroot/temp
+      - ./app-data/log:/App/log
+      - ./keys:/root/.aspnet/DataProtection-Keys
+    # expose port and/or use serving via traefik/NPM
+    ports:
+      - 8080:8080
+    env_file:
+      - .env
+    security_opt:
+      - no-new-privileges:true
