@@ -1,0 +1,18 @@
+---
+services:
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus:latest
+    restart: unless-stopped
+    user: "root" # or "nobody" (there might be a better, elegant and secure way to handle this. 
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    ports:
+      - "9090:9090"
+    volumes:
+      # /!\ To be modified depending on your needs /!\
+      - ./data:/prometheus
+      - ./etc:/etc/prometheus/
+    security_opt:
+      - no-new-privileges:true
