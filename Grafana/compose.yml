@@ -1,0 +1,17 @@
+---
+services:
+  grafana:
+    container_name: grafana
+    image: grafana/grafana:latest
+    restart: unless-stopped
+    user: "472"
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./.env
+    volumes:
+      # /!\ To be modified depending on your needs /!\
+      - ./data:/var/lib/grafana
+      - ./provisioning:/etc/grafana/provisioning
+    security_opt:
+      - no-new-privileges:true
