@@ -1,0 +1,18 @@
+---
+services:
+  homeassistant:
+    container_name: homeassistant
+    image: "ghcr.io/home-assistant/home-assistant:stable"
+    volumes:
+      - ./config:/config
+      - /etc/localtime:/etc/localtime:ro
+      - /run/dbus:/run/dbus:ro
+    restart: unless-stopped
+    privileged: true
+    # network_mode: host
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0 # for Zigbee dongle
+    environment:
+      TZ: "Europe/Berlin"
+    ports:
+      - "8123:8123"
