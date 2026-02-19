@@ -1,17 +1,27 @@
----
 services:
   grafana:
+    image: grafana/grafana
     container_name: grafana
-    image: grafana/grafana:latest
     restart: unless-stopped
-    user: "472"
+    # if you are running as root then set it to 0
+    # else find the right id with the id -u command
+    user: '0'
     ports:
-      - "3000:3000"
-    env_file:
-      - ./.env
+      - '3000:3000'
+    # adding the mount volume point which we create earlier
     volumes:
-      # /!\ To be modified depending on your needs /!\
-      - ./data:/var/lib/grafana
-      - ./provisioning:/etc/grafana/provisioning
+      - './data:/var/lib/grafana'
+      - './provisioning:/etc/grafana/provisioning'
+    dns:
+      - 172.16.30.100
     security_opt:
       - no-new-privileges:true
+    healthcheck:
+      test: [ "CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:3000/api/health || exit 1" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    environment:
+      - GF_ANALYTICS_REPORTING_ENABLED=false           # usage stats (not the main culprit but good to disable)
+      - GF_ANALYTICS_CHECK_FOR_UPDATES=false           # stops version checks
+      - GF_ANALYTICS_CHECK_FOR_PLUGIN_UPDATES=false    # very important — stops most grafana.com plugin repo calls
